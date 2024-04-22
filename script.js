@@ -12,8 +12,26 @@ canvas.addEventListener('mousedown', (e) => {
 
     x = e.offsetX
     y = e.offsetY
+})
 
-    console.log(isPressed, x, y);
+// don't paint when mouse up
+canvas.addEventListener('mouseup', (e) => {
+    isPressed = false
+
+    x = undefined
+    y = undefined
+})
+
+canvas.addEventListener('mousemove', (e) => {
+   if(isPressed) {
+        const x2 = e.offsetX
+        const y2 = e.offsetY
+
+        drawCricle(x2, y2)
+        drawLine(x, y, x2, y2)
+        x = x2
+        y = y2
+   }
 })
 
 //draws a circle
@@ -30,6 +48,6 @@ function drawLine(x1, y1, x2, y2) {
  ctx.moveTo(x1, y1)
  ctx.lineTo(x2, y2)
  ctx.strokeStyle = color
- ctx.lineWidth = size
+ ctx.lineWidth = size * 2
  ctx.stroke()
 }
