@@ -62,6 +62,6 @@ toggle.addEventListener('click', function(){
     this.classList.toggle('bi-moon');
     if(this.classList.toggle('bi-brightness-high-fill')){
         // continue here
-        body.style.
+        body.style.background = '#f5f5f5';
     }
 })
