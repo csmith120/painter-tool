@@ -56,3 +56,7 @@ canvas {
 .toolbox > *:last-child {
     margin-left: auto;
 }
+
+#size{
+    width: 60px;
+}

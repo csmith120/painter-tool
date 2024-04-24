@@ -1,7 +1,7 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
-let size = 20
+let size = document.getElementById('size').value
 let isPressed = false
 let color = document.getElementById('color').value
 let x
@@ -38,6 +38,7 @@ canvas.addEventListener('mousemove', (e) => {
 //draws a circle
 function drawCricle(x, y) {
     ctx.beginPath();
+    size = document.getElementById('size').value
     ctx.arc(x, y, size, 0, Math.PI * 2)
     color = document.getElementById('color').value
     ctx.fillStyle = color
@@ -47,6 +48,7 @@ function drawCricle(x, y) {
 //draws a line
 function drawLine(x1, y1, x2, y2) {
  ctx.beginPath()
+ size = document.getElementById('size').value
  ctx.moveTo(x1, y1)
  ctx.lineTo(x2, y2)
  color = document.getElementById('color').value
@@ -54,6 +56,7 @@ function drawLine(x1, y1, x2, y2) {
  ctx.lineWidth = size * 2
  ctx.stroke()
 }
+
 // dark mode code
 const toggle = document.getElementById('toggleDark');
 const body = document.querySelector('body');
@@ -63,5 +66,31 @@ toggle.addEventListener('click', function(){
     if(this.classList.toggle('bi-brightness-high-fill')){
         // continue here
         body.style.background = '#f5f5f5';
-    }
+        body.style.color = 'black';
+        body.style.transition = '2s';
+    } else {
+        body.style.backgroundColor = 'rgb(41, 42, 43)'
+        body.style.color = 'black';
+        body.style.transition = '2s';
+    } 
+    erase()
 })
+
+// delet button
+const clear = document.getElementById('clear')
+clear.onclick = erase;
+
+function erase() {
+    ctx.beginPath();
+    size = 1000
+    ctx.arc(400,400, size, 0, Math.PI * 2)
+    if(document.getElementById('toggleDark').classList.contains('bi-brightness-high-fill')){
+        color = '#f5f5f5'
+    } else {
+        color = 'rgb(41, 42, 43)'
+    }
+    ctx.fillStyle = color
+    ctx.fill()
+}
+
+
