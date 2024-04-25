@@ -32,6 +32,14 @@ canvas.addEventListener('mousemove', (e) => {
         drawLine(x, y, x2, y2)
         x = x2
         y = y2
+   } else {
+    //unfinished stamp code
+    if(isPressed = e.altKey(e)) {
+        const img = new Image();
+        img.onmousedown = () => {
+            ctx.drawImage(img, x, y);
+        }; img.src = "./icons/brightness_3_FILL0_wght400_GRAD0_opsz24.png";
+    }
    }
 })
 
